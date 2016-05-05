@@ -1,0 +1,216 @@
+----------------------------------
+
+2015-02-05 liji@cstnet.cn v1.4.6
+
+新增发起组对话页面；
+发起群组对话的访问地址：http://${dchatsdkDomain}/dchat/v1/embed/portal?state=grouptalk&groupid=${groupid}
+如当前用户不在组里则加该用户添加到此群组中；
+
+----------------------------------
+
+2015-01-08 liji@cstnet.cn v1.4.5
+
+手机字段可隐藏与恢复
+
+----------------------------------
+
+2014-12-22 liji@cstnet.cn v1.4.4
+
+web嵌入登录不再自动下载客户端
+web嵌入登录页面做了美化
+
+----------------------------------
+2014-11-12 liji@cstnet.cn v1.4.3
+
+NEW：
+
+dchat-sdk支持web上嵌入按钮的方式进行登录和发起对话;
+单点登录两个入口：
+发起对话${anyAccount}表示需要与谁对话，例如yangxuan@cstnet.cn
+http://${dchatsdkDomain}/dchat/v1/embed/portal?state=talkto&account=${anyAccount}
+登录
+http://${dchatsdkDomain}/dchat/v1/embed/portal?state=login
+
+新增配置项目：dchat.properties
+oauth.dchat.client_id=dchat-oauth-dev
+oauth.dchat.client_secret=123456
+oauth.dchat.redirect_uri=http://159.226.10.90:8080/dchat/oauth/callback
+oauth.dchat.access_token_URL=https://passporttest.escience.cn/ouath2/token
+oauth.dchat.authorize_URL=https://passporttest.escience.cn/oauth2/authorize
+oauth.dchat.theme=full
+
+----------------------------------
+2014-10-13 liji@cstnet.cn v1.4.2
+
+* 新增查询新邮件的REST-API：
+	入口:${domain}/dchat/rest/api/newmailcount
+	参数:user
+	方法:GET
+	返回值类型:JSON
+	返回值内容:
+		{"count":-1,"user":"def@cstnet.cn","message":"USER NOT FOUND"}
+		{"count":2,"user":"abc@cstnet.cn","message":"SUCCESS"}
+* 对于/rest/api/newmailcount增加IP访问控制，即访问者的IP必须存在于accessIPs.txt中
+
+----------------------------------
+2014-09-28 liji@cstnet.cn v1.4.1
+
+* 修正description不能为空的bug，如果vmt那边没有设置desc字段则直接拿名字作为默认说明；
+* 修改了关于vmt的两个图标
+
+----------------------------------
+2014-09-02 liji@cstnet.cn v1.4.0
+
+* 使用vmt-7.1.3c。jar，新增vmtGroup中description字段的同步功能 
+
+----------------------------------
+2014-05-20 liji@cstnet.cn
+CREATE TABLE `dchat_embed_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account` varchar(80) DEFAULT NULL,
+  `displayName` varchar(256) DEFAULT NULL,
+  `duration` varchar(10) DEFAULT NULL,
+  `indexURL` text,
+  `telephone` varchar(50) DEFAULT NULL,
+  `unitName` varchar(50) DEFAULT NULL,
+  `editTime` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+----------------------------------
+2014-03-20 liji@cstnet.cn
+1) 新增打开、关闭邮件提醒的开关
+2) 添加新表到rtp的mysql中
+
+CREATE TABLE `userprefs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `switchNotice` varchar(2) NOT NULL,
+  `updateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+----------------------------------
+2014-03-19 liji@cstnet.cn
+1) 修复不弹出新邮件提醒的bug
+2）新邮件提醒最多检查99封邮件
+3）新增一个配置项用于控制检查邮件的频率,单位为秒：
+dchat.mail.check.interval=10
+4）手机用户访问coremail直接去首页
+5）按钮跳转地址都换成了https协议，除dhome以外
+----------------------------------
+2014-02-19 liji@cstnet.cn
+1) 在dchat.properties中新增配置项：
+
+##### rtp db config ####
+rtp.group.maxuser=500
+
+rtp.db.name = rtp
+rtp.db.ip = 159.226.11.116:3306
+rtp.db.user=clive
+rtp.db.password=clive
+rtp.db.jdbcurl=jdbc:mysql://${rtp.db.ip}/${rtp.db.name}?useUnicode=true&characterEncoding=utf8&noAccessToProcedureBodies=true
+rtp.db.driverClass=com.mysql.jdbc.Driver
+rtp.db.initialPoolSize=10
+rtp.db.minPoolSize=5
+rtp.db.maxPoolSize=100
+rtp.db.acquireIncrement=10
+rtp.db.acquireRetryAttempts=5
+rtp.db.acquireRetryDelay=20
+rtp.db.numHelperThreads=5
+rtp.db.idleConnectionTestPeriod=1800
+
+##### vmt server domain ####
+vmt.server.domain=http://vmttest.escience.cn
+
+##### ddl notice rest url #####
+ddl.notice.url=http://ddltest.escience.cn/system/userNotice
+
+#### dchat home ####
+dchat.portal.url=http://dchat.escience.cn/
+
+2) tomcat中使用带有sharedlib，需修改catalina.properties中的common.loader选项：
+	* 下载sharedlib ： wget http://ci.cerc.cnic.cn/job/dchat/ws/sharedlib/*zip*/sharedlib.zip
+	* 在${tomcat.home}中解压sharedlib.zip
+	* 修改conf/catalina.properties中的common.loader修改为：
+	  common.loader=${catalina.base}/lib,${catalina.base}/lib/*.jar,${catalina.home}/lib,${catalina.home}/lib/*.jar,${catalina.home}/sharedlib,${catalina.home}/sharedlib/*.jar
+
+3) 同步VMT对企业形象的设置
+4) 一个用户可以属于多个组织
+5) 新增对ddl的推送消息的轮询功能
+6) 当用户收到新邮件时，dchat将自动弹出提示窗口
+7) 新增一个用户激活界面，使用激活页面将把当前用户加入到默认组织中
+8) 去掉域名限制，使得所有在umt中的用户都可以激活dchat服务
+9) 用户的单位、部门和邮箱信息将自动从vmt那边同步
+10) vmt隐藏部门后将自动同步到dchat数据库中，但由于缓存问题，需要重启dchat服务器才能生效
+11) 为实现功能10需要向rtp服务器的mysql库的rtplevel表中插入一些数据：
+INSERT INTO `rtplevel` VALUES 
+	('7', 'root', '0', '0', 'Two-storied-house.png'), 
+	('8', 'visible1', '7', '0', 'department.png'), 
+	('9', 'visible2', '8', '0', 'Actions-go-home.png'), 
+	('19', 'visible3', '9', '0', 'group.png'), 
+	('16', 'hidden2', '8', '0', 'Actions-go-home.png'), 
+	('20', 'hidden3', '9', '0', 'group.png'), 
+	('17', 'hidden1', '7', '0', 'department.png'), 
+	('21', 'visible4', '19', '0', 'App-Group-cobfig.png'), 
+	('23', 'hidden4', '19', '0', 'App-Group-cobfig.png'), 
+	('24', 'visible5', '21', '0', 'circle.png'), 
+	('25', 'hidden5', '21', '0', 'circle.png'), 
+	('26', 'visible6', '24', '0', 'Folder-Group.png'), 
+	('27', 'hidden6', '24', '0', 'Folder-Group.png');
+	
+12) 注意请正确配置web.xml中的rtp.host值指向对应的rtp服务器;
+
+
+----------------------------------
+2013-09-25 liji@cstnet.cn
+1) 新增未读邮件计数功能，需要与coremail和umt互联
+
+新增若干个配置项：
+1.dchat的SDK服务器域名
+dchat.domain=http://159.226.10.130:8080
+2.使用umt的passport域名
+umt.passport.domain=http://passporttest.escience.cn
+3.coremail的登录地址
+dchat.redirect.coremail=http://159.226.14.143
+4.vmt创建群组地址
+dchat.redirect.vmt=http://vmttest.escience.cn/user/index#createGroup
+5.ddl的首页地址
+dchat.redirect.ddl=http://ddltest.escience.cn/dashboard
+6.dhome的首页地址
+dchat.redirect.dhome=http://wwwtest.escience.cn/people
+7.coremail的SDK服务器地址
+coremail.sdk.server=159.226.14.143
+8.coremail的SDK端口
+coremail.sdk.port=6195
+9.dchat的sdk的webid
+dchat.sdk.webid=dchatRTP
+
+----------------------------------
+
+2013-08-26 yangxiaopeng@cnic.cn
+1)增加后台管理页面，包含初始化dChat的所有群，以及同步特定群
+
+----------------------------------
+2013-08-13 yangxiaopeng@cnic.cn
+1)增加一个配置项：vmt.mq.ignore.groupid 代表MQ消息中所有涉及到这些群的消息都不被处理，直接扔掉
+
+----------------------------------
+2013-08-12 yangxiaopeng@cnic.cn
+1）增加一个配置项 rtp.group.maxuser 表示重新创建群时允许的最大用户数（mq）
+2）修复一个bug：VMT中移除的管理员是RTP群主时，不能移除的问题
+3）更新了测试用例
+4）增加了一些RTP 角色和权限的类
+
+----------------------------------
+2013-08-09 yangxiaopeng@cnic.cn
+dchat sdk server v 1.0
+
+功能：1）系统初始化用户数据，初始化群组数据
+    2）群组增量同步（比较VMT和RTP数据差异进行同步），用户信息增量同步
+    3）添加MQ消息支持，对用户和群组消息进行操作，目前只接受消息不发送消息，数据以VMT为准
+    4）处理MQ消息失败以后，发送邮件通知管理员，目前仅在以下情况发送：refresh org/group失败，rebuild group失败，move dept失败
+    5）增加Rest API，可通过Rest Client或API操作群组和用户数据，通过IP进行API访问限制，IP配置在 accessIPs.txt中，每行一个IP
+    

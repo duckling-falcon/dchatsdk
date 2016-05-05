@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/conf/rootContext.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>6000</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/conf/log4j.properties</param-value>
+	</context-param>
+	
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>accessIPFilter</filter-name>
+		<filter-class>net.duckling.dchat.filter.AccessIPFilter</filter-class>
+		<init-param>
+			<param-name>ipConfigFile</param-name>
+			<param-value>/WEB-INF/conf/accessIPs.txt</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>corsFilter</filter-name>
+		<filter-class>net.duckling.dchat.filter.SimpleCORSFilter</filter-class>
+	</filter>
+	
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>accessIPFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>corsFilter</filter-name>
+		<url-pattern>/rest/*</url-pattern>
+	</filter-mapping>
+	
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>RTPSvcServlet</servlet-name>
+		<servlet-class>
+			com.rooyeetone.rtp.sdk.RtpSvcServlet
+		</servlet-class>
+		<init-param>
+			<param-name>rtp.web.callback</param-name>
+			<param-value>
+				net.duckling.dchat.rtp.RTPCallback
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.web.id</param-name>
+			<param-value>dchatRTP</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.xmpp.domain</param-name>
+			<param-value></param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.vcode</param-name>
+			<param-value></param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.host</param-name>
+			<param-value>159.226.11.116</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.port</param-name>
+			<param-value>9191</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.https</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.web.desc</param-name>
+			<param-value>rtpdemoJSP</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.web.uri</param-name>
+			<param-value>/dchat/rtpsvc</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.web.cookiepath</param-name>
+			<param-value>/dchat/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.web.download</param-name>
+			<param-value>/dchat/rtp_download.html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.client.protocol</param-name>
+			<param-value>webrooyee</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rtp.web.defheaders</param-name>
+			<param-value>Access-Control-Allow-Headers: Cache-Control, Content-Type
+			Access-Control-Allow-Credentials: true
+			Access-Control-Allow-Origin: *</param-value>
+		</init-param>
+
+		<!-- , X-Requested-With Access-Control-Allow-Methods: OPTIONS, TRACE, GET, HEAD, POST -->
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/conf/servletContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>RTPSvcServlet</servlet-name>
+		<url-pattern>/rtpsvc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.png</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.map</url-pattern>
+	</servlet-mapping>
+</web-app>

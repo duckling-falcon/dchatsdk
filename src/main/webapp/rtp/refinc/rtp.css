@@ -1,0 +1,27 @@
+.rtp_state_img {
+border:medium none;
+position:absolute;
+width:80px;
+height:80px;
+}
+#rtp_state_offline {
+top:0px;
+}
+#rtp_state_dnd{
+top:-20px;
+}
+#rtp_state_online, #rtp_state_chat {
+top:-40px;
+}
+#rtp_state_away, #rtp_state_xa{
+top:-60px;
+}
+#rtp_cmd_btn {
+display:inline-block;
+height:20px;
+margin1:9px 0 0;
+overflow:hidden;
+position:relative;
+width:80px;
+cursor:pointer;
+}

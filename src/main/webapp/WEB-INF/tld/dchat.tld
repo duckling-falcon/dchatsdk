@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>dChat sdk taglib</description>
+	<display-name>dChat sdk Extension</display-name>
+	<tlib-version>0.4</tlib-version>
+	<short-name>dchat</short-name>
+	<uri>WEB-INF/tld/dchat.tld</uri>
+
+	<tag>
+		<description>
+			dChat Public Account Service
+    	</description>
+		<name>pubacc</name>
+		<tag-class>net.duckling.dchat.tags.PublicAccountTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>destination account</description>
+			<name>account</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>params to display</description>
+			<name>params</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>outside</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<name>autoclick</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+	</tag>
+	
+</taglib>

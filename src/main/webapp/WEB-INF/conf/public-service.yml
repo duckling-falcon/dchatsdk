@@ -1,0 +1,42 @@
+---
+group: cstnet
+groupName: 中国科技网
+image: cstnet_logo.png
+env: product
+services: 
+    - name: network
+      displayName: 网络运行
+      account: 58812000@cstnet.cn
+      indexURL: http://www.cstnet.cn
+      telephone: 010-58812000
+      duration: 7X24小时
+    - name: coremail
+      displayName: 邮箱服务
+      account: jiangting@cstnet.cn
+      indexURL: http://mail.cstnet.cn
+      telephone: 010-58812857
+      duration: 5X8小时
+    - name: network
+      displayName: 网络运行
+      account: 58812000@cstnet.cn
+      indexURL: http://dchat.cstnet.cn
+      telephone: 010-58812858
+      duration: 5X8小时
+---
+group: las
+groupName: 国家科学图书馆
+image: cstnet_logo.png
+env: product
+services: 
+    - name: system-info
+      displayName: 系统咨询
+      account: it@mail.las.ac.cn
+      indexURL: http://www.las.ac.cn
+      telephone: 010-82626611
+      duration: 7X24小时
+    - name: monitor
+      displayName: 科技监测
+      account: autoMonitorAlter@mail.las.ac.cn
+      indexURL: http://www.las.ac.cn
+      telephone: 010-82626611
+      duration: 5X8小时

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>Falcon core taglib</description>
+	<display-name>Falcon Core</display-name>
+	<tlib-version>0.4</tlib-version>
+	<short-name>f</short-name>
+	<uri>WEB-INF/tld/falcon.tld</uri>
+
+	<tag>
+		<description>
+		Change css version with readed version number
+    	</description>
+		<name>css</name>
+		<tag-class>net.duckling.falcon.api.mstatic.CssTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>css's url</description>
+			<name>href</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>media types where css used</description>
+			<name>media</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<description>
+		Change script version with readed version number
+    	</description>
+		<name>script</name>
+		<tag-class>net.duckling.falcon.api.mstatic.ScriptTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>script's url</description>
+			<name>src</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>script types</description>
+			<name>type</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>version</name>
+		<tag-class>net.duckling.falcon.api.mstatic.VersionTag</tag-class>
+		<body-content>empty</body-content>
+	</tag>
+</taglib>

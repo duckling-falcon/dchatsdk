@@ -1,0 +1,231 @@
+@charset "utf-8";
+/*
+version:umt-2013
+author:zhangshixiang@cstnet.cn
+data:2013-01-15
+*/
+
+/* black banner */
+body.login {font-family:Arial,"宋体"; font-size:14px; background:url(images/body_bg.png) repeat-x #ebeded;}
+.clear {clear:both;}
+img {border:none;}
+.small-font {font-size:13px;}
+.gray-text {color:#aaa;}
+.sub-gray-text,.login .login-right .sub-gray-text a {color:#888;}
+.success-text {color:#0a0;}
+.warnning-text {color:#fd0;}
+.messagebar,.error,.error-text,span.error lable.error{color:#cc0000;}
+input {font-family:Arial,"微软雅黑"}
+a.return {display:inline-block; margin-left:1em; text-decoration:none; cursor:pointer;}
+a.delete{margin-left:10px; cursor:pointer;}
+.replenish {margin-left:60px;}
+.gray_bg {background:#f8f8f8;}
+.btn.long {padding:10px 3em; font-family:Arial,"微软雅黑";font-weight:bold; font-size:16px;}
+.dashBorder {border-top:1px dotted #ccc;}
+
+.nav-bar.fix-top {
+	height:40px; background:#1b1b1b; padding:0; margin:0;
+	color:#999; box-shadow:0 -1px 0 rgba(0, 0, 0, 0.1) inset, 0 1px 10px rgba(0, 0, 0, 0.1);
+	position:fixed; top:0; left:0; width:100%; z-index:99999;
+	margin-bottom:50px;
+}
+.nav-bar .logoDiv {float:left;}
+.login-right .duckling-logo {background:url(images/logo-duckling.png) 2px 0px no-repeat; cursor:pointer; margin-top:5px; display:inline-block; width:22px; height:16px;} 
+.nav-bar .logo-title {cursor:pointer;display:inline-block; width:150px; height:30px; color:#fff; font-weight:bold; vertical-align:middle; margin-top:10px;}
+.nav-bar ul.nav {float:left; list-style:none; padding-left:0em; margin:0;}
+.nav-bar ul.nav-right {float:right; list-style:none; margin:0;}
+.nav-bar ul li {float:left; margin:10px 10px;}
+.nav-bar ul.nav > li {margin:0;}
+.nav-bar ul.nav-right li:first-child {margin:10px 10px 0 0;}
+.nav-bar ul li a {color:#999;text-decoration:none; cursor:pointer;}
+.nav-bar ul li:hover a,.nav-bar ul li.active a {color:#fff;}
+
+.login.container {
+	margin-top:90px; margin-bottom:40px; border:1px solid #ddd;
+	background:#fefefe; box-shadow:0px 0px 5px #ccc;
+}
+.container.gray {
+	background:#fefefe; border:1px solid #ddd; padding:20px 0 60px; margin-bottom:40px;
+	min-height:400px; *padding-top:70px;
+}
+h1.success {color:#0a0;font-family:Arial,"微软雅黑"; font-size:18px; margin:5em; text-align:center;}
+h1.fail {color:#a00;font-family:Arial,"微软雅黑"; font-size:18px; margin:5em; text-align:center;}
+h2.login-title {
+	font-family:Arial,"微软雅黑"; font-size:28px;
+	color:#333;
+	padding:10px 2% 10px; margin:0 5% 10px;
+	border-bottom:1px solid #eee;
+}
+#loginForm h2.login-title,h2.both.login-title {
+	border-bottom:1px solid #eee; padding-bottom:2px;
+	font-size:28px; 
+}
+h2 .btn.btn-success.hide768 {float:right; margin-top:7px;}
+
+.login-left a.btn.cancle { color:#fff;}
+.login-left {
+	float:left; 
+	padding-top:2em; 
+}
+.login-left h3 {
+	background:url(images/logo-duckling.png) 170px 2px no-repeat;text-align:center;
+}
+.login-left table.form_table td.mail-title,h2 .mail-title {
+	font-weight:normal; font-family:Arial,sans-serif,"微软雅黑"; font-size:14px;
+	color:#999;
+}
+.login-left h3 .cstnet {font-weight:normal; }
+.login-left a {color:#08c; text-decoration:none;}
+.login-left a:hover {color:#079;}
+.login-left a img,.login .login-right .sub-header a img,.oauth .thirdLogin a img {margin:-3px 5px; padding:3px; background:#f8f8f8; border:1px solid #eee; border-radius:4px;width:20px;}
+.login-left table.form_table {margin:20px auto; font-size:13px;  word-break:break-all;}
+.login-left #loginForm table.form_table {margin-top:50px; margin-bottom:40px;}
+.login-left table.registtable.form_table {margin-bottom:70px;}
+.login-left table.form_table span.ness,span.ness {color:#cc0000; margin-right:5px;}
+.login-left table.form_table .text-note,.red {color:#a00;}
+.login-left table.form_table .text-quote,.help-block.text-quote {color:#999; margin:7px 0 2px; font-size:13px;}
+.login-left table.form_table .help-quote,a.help-quote {
+	display:inline-block; width:20px; height:20px; 
+	background:url(images/icon_help.png) 4px 5px no-repeat; cursor:pointer;
+}
+.login-left table.form_table tr {margin:7px 0px;}
+.login-left table.form_table th {font-weight:bold; width:30%; text-align:right; font-size:16px; padding-right:10px; padding-top:10px; vertical-align:top;}
+.login-left table.form_table td {padding:7px 2px;}
+.login-left table.form_table td.mail {font-size:16px;}
+.login-left table.form_table td .escience-mail {font-size:16px;}
+.login-left table.form_table td input[type="text"],
+.login-left table.form_table td input[type="password"] {padding:5px 10px; max-width:17em; font-size:16px; font-family:Arial,sans-serif,"微软雅黑"}
+.login-left table.form_table td input[type="text"].logininput,input.ValidCode,
+.login-left .control-group input[type="text"].logininput {width:5em;}
+.login-left table.form_table td input[type="checkbox"] {margin-left:0;}
+.login-left p.regist {text-align:center; font-size:13px; margin:0; padding:30px;}
+.login-left .forgetpsw {display:inline-block; margin-left:1em;}
+.login-left img#ValidCodeImage {vertical-align:middle;}
+.login-left .login-b {padding:0 0 2em 12em; font-size:13px; margin:0; }
+.login-right {
+	float:right; padding-bottom:20px;
+	font-size:13px; color:#333; margin-left:-1px;
+	margin-top:-1px; border-top:1px solid #ddd; border-left:1px solid #ddd;
+}
+.login-right a {color:#333; border-bottom:1px dotted #333; text-decoration:none;}
+.login-right h3 {font-size:14px; padding:30px 5% 10px 5%; margin:30px 5% 0; border-top:1px solid #f5f5f5;}
+.login-right p {padding:5px 10% 5px 10%; margin:5px 0; line-height:1.7em;text-align:justify; text-justify:inter-ideograph;}
+.login-right p.header {margin-top:40px; margin-bottom:30px; font-weight:bold; font-size:16px; text-align:center; line-height:1em;}
+.login-right p.header .small-font {font-weight:normal;}
+.login-right p.sub-header {text-align:center; margin:-20px 20px;}
+.login-right p.sub-header a {border:none;}
+
+
+/*footer*/
+.footer {font-size:13px; text-align:center;}
+.footer ul.umt-footer-nav {list-style:none; margin:15px 0 0 60px;}
+.footer ul.umt-footer-nav li {float:left; padding:5px 10px;}
+.footer ul.umt-footer-nav li#footer-logo {background:url(images/login/logo-rol-beta.png) 0 -37px no-repeat; height:20px; width:70px;}
+.footer ul.umt-footer-nav li a {text-decoration:none; color:#666;}
+.footer p {margin:3px 0 10px 0; color:#666; }
+.footer p a {color:#666; border-bottom:1px dotted #333; text-decoration:none;}
+
+/*login and regist*/
+.container.gray table.form_table {margin:30px 7%;}
+.container.gray table.form_table th {text-align:right; color:#333;}
+.container.gray table.form_table.setMail th {vertical-align:top; padding-top:20px;}
+.container.gray table.form_table td {padding:10px;}
+.container.gray table.form_table td a {color:#08c;}
+.container.gray table.form_table td input[type="text"],.container.gray table.form_table td input[type="password"] {padding:7px; width:20em;}
+
+/*congratulation login success*/
+div.congratulation {margin:60px 7%;}
+p.congratulation {margin-left:7%; margin-top:10px; text-align:left;}
+p.congratulation.sorry {margin-top:60px;}
+p.congratulation span.email {font-weight:bold; font-size:22px; color:#0a0;}
+.content.container.login.gray p.congratulation {margin:20px 6%;}
+.content.container.login.gray p.congratulation:first-child {margin-top:60px;}
+h3.success {margin:20px 60px 0px 60px; padding:5px 10px 5px 10px; font-size:18px; background:#f8f8f8;}
+h3.success.slide {background:#71C271; color:#fff;}
+h2.total-title {
+	font-family:Arial,"微软雅黑"; font-size:28px;
+	color:#333;
+	padding:10px 2% 5px 0; 
+	border-bottom:1px solid #eee;
+	margin:0 5% 10px;word-break:break-all;}
+h2.total-title span a {margin:0 0 0 2em; color:#08c; text-decoration:none; font-weight:normal;}
+div.congratulation h3{font-size:22px;}
+p.config {margin:25px 0 10px 60px; font-size:13px;}
+p.config a {color:#08c;}
+p.content-text {margin:30px 5% 10px 5%; line-height:1.7em; text-align:justify; text-justify:newspaper; text-indent:2em; word-break:break-all;}
+p.content-text-mid{margin:20px 5% 10px 5%; line-height:1.7em; text-align:justify; text-justify:newspaper; text-indent:2em; word-break:break-all;}
+
+.thirdPartyLogin {margin:10px 8%;}
+.thirdPartyLogin .thirdPartyLeft {float:left; width:80px}
+.thirdPartyLogin .thirdPartyLeft img {width:60px; height:60px; padding:2px; background:#fff; border:1px solid #ddd; border-radius:5px;}
+.thirdPartyLogin .thirdPartyRight {float:left; min-width:40%}
+.thirdPartyLogin .thirdPartyRight h2 {font-size:20px; font-weight:600; font-family:Arial,"微软雅黑"; margin-top:0;}
+.thirdPartyLogin .thirdPartyRight .hint {margin:-10px 0 60px 0; width:auto;}
+.headerBar {
+	list-style:none; margin:10px 0 20px 5.3%; padding:0;
+}
+.headerBar li {float:left; list-style:none; margin:0 5px 7px -3px; border:3px solid transparent;}
+.headerBar li:hover {border:3px solid #f90;}
+.headerBar li.active {border:3px solid #f90;}
+.headerBar li a {padding:3px 0px; text-decoration:none;}
+.headerBar .header-block {display:block; width:160px; height:100px; margin-bottom:0;}
+.headerBar .header-block .logo {background:url(images/regist/escience-big-icon.png) 5px -10px no-repeat; width:150px; height:80px; display:block;}
+.headerBar .header-block.escience {background:url(images/regist/escience-35.png) 30px 33px #da8302 no-repeat;}
+.headerBar .header-block.escience .logo{background-position:30px 90px;}
+.headerBar .header-block.dhome {background:#4084C9;}
+.headerBar .header-block.dhome .logo {background-position:30px -410px;}
+.headerBar .header-block.ddl {background:#71AA00;}
+.headerBar .header-block.ddl .logo {background-position:30px -10px;}
+.headerBar .header-block.csp {background:#CC0033;}
+.headerBar .header-block.csp .logo {background-position:30px -110px;}
+.headerBar .header-block.dchat {background:#0069A2;}
+.headerBar .header-block.dchat .logo {background-position:30px -1410px;}
+.headerBar .header-block.vmt {background:#009999;}
+.headerBar .header-block.vmt .logo {background-position:30px -1310px;}
+.headerBar .header-block.rol {background:#640F6C;}
+.headerBar .header-block.rol .logo {background-position:30px -210px;}
+.headerBar .header-block.email {background:#0F5083;}
+.headerBar .header-block.email .logo {background-position:30px -1110px;}
+.headerBar .header-block.nav {background:#EC008C;}
+.headerBar .header-block.nav .logo {background-position:30px -1210px;}
+.headerBar .header-block.cos {background:#F39C12;}
+.headerBar .header-block.cos .logo {background-position:30px -1510px;}
+.headerBar_s .header-block.cos {background:#AAAAAA;}
+.headerBar_s .header-block.cos .logo {background-position:-35px -1030px;}
+.headerBar .header-block .header-text {
+	display:block; color:#fff; text-align:center; 
+	position:relative; top:-5px; font-size:13px;
+}
+.headerBar ul li {float:left; margin-right:40px;}
+
+/*sth changed from bootstrap*/
+#infoForm.form-horizontal {margin:30px 0;}
+#secondaryForm.form-horizontal,#changepassForm.form-horizontal {margin:30px 5%}
+#loginForm.form-horizontal .control-label,#createRequestForm.form-horizontal .control-label { 
+	font-weight:bold; text-align:right; font-size:16px; 
+	padding-right:10px; padding-top:10px; vertical-align:top;
+	margin-top:5px;
+}
+.form-horizontal#securityEmailForm{padding:0 5%}.form-horizontal#findPswForm { padding:30px 5%;}
+.form-horizontal .control-label {font-weight:bold; }
+.form-horizontal .control-label.nopadding {padding-top:0}
+#createRequestForm.form-horizontal .control-label {margin-top:-5px;}
+#loginForm.form-horizontal .controls {margin-top:10px;}
+#loginForm.form-horizontal input[type="checkbox"],
+.form-search input, .form-inline input, .form-horizontal input, .form-search textarea, .form-inline textarea, .form-horizontal textarea, .form-search select, .form-inline select, .form-horizontal select, .form-search .help-inline, .form-inline .help-inline, .form-horizontal .help-inline, .form-search .uneditable-input, .form-inline .uneditable-input, .form-horizontal .uneditable-input, .form-search .input-prepend, .form-inline .input-prepend, .form-horizontal .input-prepend, .form-search .input-append, .form-inline .input-append, .form-horizontal .input-append{
+	margin-bottom:6px;}
+	
+.duckling-logo-small {background:url(images/login/logo-duckling.png) 2px 0px no-repeat; cursor:pointer; margin-top:5px; display:inline-block; width:22px; height:16px;} 
+
+img.validateImg {max-width:100px}
+
+.navbar.navbar-fixed-top .navbar-inner .container .brand.ddl-logo a#logo {
+    background:url("images/logo-2012lynx-100w.png") no-repeat scroll 0 0 transparent;
+    display:block; height:34px; width:142px; margin:3px 0px 5px 0; float:left;
+    cursor:pointer;
+}
+
+.navbar.navbar-fixed-top .navbar-inner .container .caret {
+    background: url("images/trigle.png") no-repeat scroll 0 0 transparent; display: inline-block;
+    float:left; height:40px; margin: 4px 0 0 128px; padding: 0; width: 24px;
+}

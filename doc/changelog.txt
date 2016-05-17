@@ -108,9 +108,9 @@ dchat.mail.check.interval=10
 rtp.group.maxuser=500
 
 rtp.db.name = rtp
-rtp.db.ip = 159.226.11.116:3306
-rtp.db.user=clive
-rtp.db.password=clive
+rtp.db.ip = 
+rtp.db.user=
+rtp.db.password=
 rtp.db.jdbcurl=jdbc:mysql://${rtp.db.ip}/${rtp.db.name}?useUnicode=true&characterEncoding=utf8&noAccessToProcedureBodies=true
 rtp.db.driverClass=com.mysql.jdbc.Driver
 rtp.db.initialPoolSize=10

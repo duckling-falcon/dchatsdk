@@ -6,7 +6,7 @@
 	String path = request.getContextPath();
 	request.setAttribute("path", path);
 	IRtpSvc rtpsvc = RtpSvc.getInstance(request);
-	rtpsvc.exec("IMLogin", "liji@cstnet.cn");
+	rtpsvc.exec("IMLogin", "liji@domain.cn");
 
 %>
 
